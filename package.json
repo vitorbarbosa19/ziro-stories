@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/vitorbarbosa19/ziro-stories#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "puppeteer": "^0.13.0",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5"
