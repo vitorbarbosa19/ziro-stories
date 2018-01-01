@@ -1,0 +1,27 @@
+{
+  "name": "ziro-stories",
+  "version": "1.0.0",
+  "description": "Download photos from ig stories for accounts chosen by the user",
+  "main": "index.js",
+  "scripts": {
+    "stories": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitorbarbosa19/ziro-stories.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Vitor Barbosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitorbarbosa19/ziro-stories/issues"
+  },
+  "homepage": "https://github.com/vitorbarbosa19/ziro-stories#readme",
+  "dependencies": {
+    "puppeteer": "^0.13.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
+  }
+}
