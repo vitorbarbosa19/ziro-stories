@@ -34,7 +34,7 @@ const fetchStories = async (account_name) => {
 			}
 			console.log(`${account_name}: stories downloaded successfully!`)
 		} else {
-			console.log(`${account_name}: XXX- no stories today -XXX`)
+			console.log(`${account_name}: - no stories today -`)
 		}
 	} catch (error) {
 		console.log(error)
