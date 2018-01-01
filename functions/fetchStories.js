@@ -1,7 +1,6 @@
-const fetchStories = async () => {
+const fetchStories = async (account_name) => {
 	try {
 		const fetchAccountId = require('./fetchAccountId')
-		const account_name = 'morinafashion'
 		const account_id = await fetchAccountId(account_name)
 		const getFromCookieFile = require('./getFromCookieFile')
 		const parameters = {
@@ -21,18 +20,22 @@ const fetchStories = async () => {
 				cookie: `sessionid=${parameters.session_id}; ds_user_id=${parameters.ds_user_id}`
 			}
 		})
-		const media = JSON.parse(response).reel.items
-		const images = media.map( (item) => {
-			return item.image_versions2.candidates.filter( (image) => {
-				return image.height > 1000
-			}).pop()
-		})
-		const request = require('request')
-		const fs = require('fs')
-		for (index = 0; index < images.length; index++) {
-			request(images[index].url).pipe(fs.createWriteStream(`images/${account_name}-${index}.jpg`))
+		if (JSON.parse(response).reel !== null) {
+			const media = JSON.parse(response).reel.items
+			const images = media.map( (item) => {
+				return item.image_versions2.candidates.filter( (image) => {
+					return image.height > 1000
+				}).pop()
+			})
+			const request = require('request')
+			const fs = require('fs')
+			for (let index = 0; index < images.length; index++) {
+				request(images[index].url).pipe(fs.createWriteStream(`images/${account_name}-${index}.jpg`))
+			}
+			console.log(`${account_name}: stories downloaded successfully!`)
+		} else {
+			console.log(`${account_name}: XXX- no stories today -XXX`)
 		}
-		console.log(`${account_name}: stories downloaded successfully!`)
 	} catch (error) {
 		console.log(error)
 	}
