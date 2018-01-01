@@ -1,7 +1,7 @@
 const fetchStories = async () => {
 	try {
 		const fetchAccountId = require('./fetchAccountId')
-		const account_name = 'limonemodas'
+		const account_name = 'morinafashion'
 		const account_id = await fetchAccountId(account_name)
 		const getFromCookieFile = require('./getFromCookieFile')
 		const parameters = {
@@ -32,9 +32,10 @@ const fetchStories = async () => {
 		for (index = 0; index < images.length; index++) {
 			request(images[index].url).pipe(fs.createWriteStream(`images/${account_name}-${index}.jpg`))
 		}
+		console.log(`${account_name}: stories downloaded successfully!`)
 	} catch (error) {
 		console.log(error)
 	}
 }
 
-fetchStories()
+module.exports = fetchStories

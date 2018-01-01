@@ -1,7 +1,7 @@
-const puppeteer = require('puppeteer')
-
-puppeteer.launch().then( async (browser) => {
+const loginAndSaveCookie = async () => {
 	try {
+		const puppeteer = require('puppeteer')
+		const browser = await puppeteer.launch()
 		const page = await browser.newPage()
 		await page.goto(`https://instagram.com`)
 		await page.click(`a[href*='javascript']`)
@@ -30,10 +30,12 @@ puppeteer.launch().then( async (browser) => {
 			await page.screenshot({ path: './screenshots/postChallenge.jpg' })
 		}
 		const cookies = await page.cookies()
-		const writeCookieFile = require('./writeCookieFile')
-		console.log(await writeCookieFile(cookies))
+		const writeCookieToFile = require('./writeCookieToFile')
+		console.log(await writeCookieToFile(cookies))
 		await browser.close()
 	} catch (error) {
 		console.log(error)
 	}
-})
+}
+
+module.exports = loginAndSaveCookie
