@@ -1,4 +1,4 @@
-const fetchStories = async (account_name) => {
+const fetchStories = async (account_name, brand_name) => {
 	try {
 		const fetchAccountId = require('./fetchAccountId')
 		const account_id = await fetchAccountId(account_name)
@@ -30,7 +30,7 @@ const fetchStories = async (account_name) => {
 			const request = require('request')
 			const fs = require('fs')
 			for (let index = 0; index < images.length; index++) {
-				request(images[index].url).pipe(fs.createWriteStream(`images/${account_name}-${index}.jpg`))
+				request(images[index].url).pipe(fs.createWriteStream(`images/${brand_name}-${index}_.jpg`))
 			}
 			console.log(`${account_name}: stories downloaded successfully!`)
 		} else {

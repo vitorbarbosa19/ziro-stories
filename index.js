@@ -7,7 +7,7 @@ const stories = async () => {
 		const fetchStories = require('./functions/fetchStories')
 		const timeoutToPleaseIg = require('./functions/timeoutToPleaseIg')
 		for (let index = 0; index < igAccounts.length; index++) {
-			await fetchStories(igAccounts[index].name)
+			await fetchStories(igAccounts[index].name, igAccounts[index].brand)
 			await timeoutToPleaseIg(1500)
 		}
 		console.log('Program finished!')
