@@ -3,8 +3,7 @@ const loginAndSaveCookie = async () => {
 		const puppeteer = require('puppeteer')
 		const browser = await puppeteer.launch()
 		const page = await browser.newPage()
-		await page.goto(`https://instagram.com`)
-		await page.click(`a[href*='javascript']`)
+		await page.goto(`https://www.instagram.com/accounts/login`)
 		await page.type(`input[type*='text']`, 'ma.joana_', {delay: 200})
 		await page.type(`input[type*='password']`, 'casa10', {delay: 200})
 		await page.click(`form > span > button`)
@@ -18,6 +17,7 @@ const loginAndSaveCookie = async () => {
 		})
 		if (loginChallenge) {
 			await page.screenshot({ path: './functions/screenshots/preChallenge.jpg' })
+			await page.keyboard.press('Escape')
 			await page.click(`form > span`)
 			await page.click(`form > span`)
 			await page.waitFor(1500)
