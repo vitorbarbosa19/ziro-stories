@@ -8,13 +8,21 @@ const loginAndSaveCookie = async () => {
 		await page.type(`input[type*='password']`, 'casa10', {delay: 200})
 		await page.click(`form > span > button`)
 		await page.waitForNavigation()
+		//check if there is a login challenge page
 		const loginChallenge = await page.$$eval('button', (buttonTags) => {
-			return Array.prototype.map.call(buttonTags, (button) => { 
+			//scrape all buttons on current page and see if any is about sending a security code
+			const buttonTexts = Array.prototype.map.call(buttonTags, (button) => { 
 				return button.textContent === 'Send Security Code' ? true : false
-			}).reduce( (accumulator, currentValue) => {
-				return accumulator || currentValue
 			})
+			if (buttonTexts.length > 0) {
+				//if at least one button is about sending a security code, reduce to true
+				return buttonTexts.reduce( (accumulator, currentValue) => {
+					return accumulator || currentValue
+				})
+			}
+			return false
 		})
+		console.log(loginChallenge)
 		if (loginChallenge) {
 			await page.screenshot({ path: './functions/screenshots/1-preChallenge.jpg' })
 			await page.keyboard.press('Escape')
