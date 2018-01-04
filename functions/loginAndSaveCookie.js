@@ -22,7 +22,6 @@ const loginAndSaveCookie = async () => {
 			}
 			return false
 		})
-		console.log(loginChallenge)
 		if (loginChallenge) {
 			await page.screenshot({ path: './functions/screenshots/1-preChallenge.jpg' })
 			await page.keyboard.press('Escape')
