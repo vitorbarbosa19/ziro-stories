@@ -25,7 +25,7 @@ const loginAndSaveCookie = async () => {
 		if (loginChallenge) {
 			await page.screenshot({ path: './functions/screenshots/1-preChallenge.jpg' })
 			await page.keyboard.press('Escape')
-			await page.click(`section > div > a`)
+			await page.click(`form > span > button`)
 			await page.screenshot({ path: './functions/screenshots/2-closePopup.jpg' })
 			await page.click(`form > span`)
 			await page.waitFor(1500)
