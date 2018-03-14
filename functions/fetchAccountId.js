@@ -3,7 +3,7 @@ const fetchAccountId = (igAccount) => {
 		try {
 			const requestPromise = require('request-promise-native')
 			const accountInfo = await requestPromise(`https://instagram.com/${igAccount}/?__a=1`)
-			resolve(JSON.parse(accountInfo).user.id)
+			resolve(JSON.parse(accountInfo).graphql.user.id)
 		} catch (error) {
 			reject(error)
 		}
