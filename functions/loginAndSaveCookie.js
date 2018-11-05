@@ -6,7 +6,7 @@ const loginAndSaveCookie = async () => {
 		await page.goto(`https://www.instagram.com/accounts/login`)
 		await page.type(`input[type*='text']`, 'ma.joana_', {delay: 200})
 		await page.type(`input[type*='password']`, 'casa10', {delay: 200})
-		await page.click(`form > span > button`)
+		await page.click(`form > div > button`)
 		await page.waitForNavigation()
 		//check if there is a login challenge page
 		const loginChallenge = await page.$$eval('button', (buttonTags) => {
