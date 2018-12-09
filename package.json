@@ -1,7 +1,6 @@
 {
   "name": "ziro-stories",
   "version": "1.0.0",
-  "description": "Download photos from ig stories for accounts chosen by the user",
   "main": "index.js",
   "scripts": {
     "stories": "node index"
